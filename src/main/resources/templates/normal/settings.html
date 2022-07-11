@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>User DashBoard</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card mx-3 my-3">
+						<div class="card-body">
+							<h1 class="text-center mb-3 text-info text-uppercase">Change Password</h1>
+							<form novalidate th:action="@{/user/change-password}" th:object="${changepass}" method="post" >
+							
+							<!-- old password field -->
+							<div class="form-group">
+							<label for="" class="text-info">Old Password:</label>
+							<input type="password" name="oldpassword" placeholder="Enter Old Password" 
+							th:classappend="${#fields.hasErrors('oldpassword') ? 'is-invalid':''}"
+							class="form-control "/>
+						   <div class="invalid-feedback" th:each="e: ${#fields.errors('oldpassword')}" th:text="${e}"></div>
+							
+							</div> 
+							
+							<!-- New password field -->
+							<div class="form-group">
+							<label for="" class="text-info">New Password:</label>
+							<input type="password" name="newpassword" placeholder="Enter New Password" 
+							th:classappend="${#fields.hasErrors('newpassword') ? 'is-invalid':''}" class="form-control "/>
+							
+							<div class="invalid-feedback" th:each="e: ${#fields.errors('newpassword')}" th:text="${e}"></div>
+							</div>
+							
+							<div class="container text-center">
+							
+							<button type="submit" class="btn btn-success">Change</button>
+							<button type="reset" class="btn btn-warning">Reset</button>
+							
+							</div>
+							
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		$(document).ready(()=>{
+			$(".item").removeClass("active");
+			$("#settings-link").addClass("active");
+		});
+		</script>
+	</section>
+</body>
+</html>

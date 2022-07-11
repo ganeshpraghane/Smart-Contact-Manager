@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	th:fragment="layout(content)">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="${title}">Base Html</title>
+<!--bootstrap css -->
+<link th:rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- custom css -->
+<link th:rel="stylesheet" th:href="@{/css/mystyle.css}">
+<!-- jquery -->
+<script th:src="@{/bootstrap/js/jquery.js}"></script>
+</head>
+
+<body>
+	<!-- start navbar  -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">Smart Contact Manager</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto text-uppercase">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:text="${user.name}"> </a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+	<!-- end navbar  -->
+
+	<!-- sidebar -->
+	<div class="sidebar mt-2">
+
+		<div class="mb-3">
+			<span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+		</div>
+		<a id="home-link" href="#" th:href="@{/user/index}" class="item active"><i class="fa-solid fa-house-chimney"></i> Home</a>
+		<a id="view-link" th:href="@{/user/show-contacts/0}" class="item"><i class="fas fa-id-card-alt"></i> View Contact</a> 
+		<a id="add-link" href="#" th:href="@{/user/add-contact}" class="item"><i class="fas fa-pencil-alt"></i> Add Contact</a> 
+		<a id="profile-link" th:href="@{/user/profile}" class="item"><i class="fas fa-user-circle"></i> Your Profile</a>
+		<a id="settings-link" th:href="@{/user/settings}" class="item"><i class="fas fa-cogs"></i> Settings</a>
+		<a href="#" th:href="@{/logout}" class="item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+		<div class="divider"></div>
+	</div>
+	<!-- end sidebar -->
+	<!-- content area -->
+	<div class="content mt-5">
+		<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+		<div class="container px-5 my-2">
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}"
+				class="alert-dismissible custom-margin pb-0 alert " role="alert">
+				<p th:text="${session.message.content}" class="text-center">this
+					is for testing</p>
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+		<div th:replace="${content}"></div>
+	</div>
+	<!-- end content area -->
+
+
+
+
+	
+	<script th:src="@{/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script th:src="@{/js/myscript.js}"></script>
+	<script>
+		function deleteContact(cid,page){
+			swal({
+  				title: "Are you sure?",
+  				text: "you want to delete this contact!",
+  				icon: "warning",
+  				buttons: true,
+  				dangerMode: true,
+			})
+				.then((willDelete) => {
+  						if (willDelete) {
+    						window.location="/user/delete/"+cid+"/"+page;
+  							} else {
+    							swal("Your contact is safe!!");
+  				}
+		});
+			
+		}
+	</script>
+</body>
+
+</html>

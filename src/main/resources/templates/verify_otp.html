@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login Page</title>
+
+</head>
+
+<body>
+	<section>
+		<div id="login">
+			<div class="container">
+				<div id="login-row"
+					class="row justify-content-center align-items-center">
+					<div id="login-column" class="col-md-6">
+					
+					<div class="container notify">
+					<div th:if="${session.message}"
+						th:classappend="${session.message.type}"
+						class="alert-dismissible pb-0 custom-margin alert msg mt-4 mb-0" role="alert">
+						<p th:text="${session.message.content}" class="text-center">this
+							is for testing</p>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+					</div>
+					
+						<div id="login-box" class="col-md-12" style="height:250px;">
+							<div class="container p-4">
+							<form action="#" method="post" th:action="@{/verify-otp}" class="mt-4">
+								<div class="form-group">
+									<label for="" class="text-info">Enter OTP:</label>
+									<input type="text" required name="otp"
+									placeholder="Enter OTP here" class="form-control" />
+								</div>
+								<div class="container text-center">
+								<button type="submit" class="btn btn-success">Verify OTP</button>
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+body{
+	background:#e2e2e2!important;
+}
+.bg-primary{
+	background:#009688!important;
+}
+.banner{
+	width:100%;
+	height:93vh;
+	color:white;
+	background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)),url(/image/bg_contact3.jpg) no-repeat center center fixed;
+	background-size:cover;
+	
+}
+.my-card{
+	padding:20px;
+	background:#ffffff;
+}
+
+/* login form css */
+#login .container #login-row #login-column #login-box {
+  margin-top: 100px;
+  max-width: 600px;
+  height: 385px;
+  background-color: #ffffff;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+
+/* SideBar Style */
+
+	 @media only screen and (max-width: 600px){
+			
+		.sidebar{
+			display:none;
+			width:40% !important;
+			background:#ffffff;
+			height: 100vh;
+			position: fixed;
+			padding-top:20px;
+		}
+		.content{
+		margin-left: 0%!important;
+		}
+	} 
+
+
+
+.sidebar{
+	width:18%;
+	background:#ffffff;
+	height:100%;
+	position:fixed;
+	padding-top:30px;
+	z-index: 99999999999999;
+	
+}
+.sidebar a{
+	width:100%;
+	display: block;
+	text-decoration:none;
+	color:grey;
+	padding:10px 25px;
+}
+.sidebar a:hover{
+	background:#009688!important;
+	color:white;
+}
+.sidebar .divider{
+	height:.5px;
+	width: 100%;
+	background: #e2e2e2;
+	margin-top: 10px;
+}
+
+.sidebar .crossBtn{
+	position: absolute;
+	top: 0;
+	right:35px;
+	font-size: 36px;
+	cursor: pointer;
+}
+
+.content{
+	margin-left:20%;
+}
+.custom-padding{
+	padding: 0 110px;
+}
+.custom-margin{
+	margin: 0 100px;
+}
+
+.my_profile_picture{
+	width:35px;
+	height:35px;
+	object-fit:cover;
+	border-radius:50%;
+}
+.custom-alignment{
+	display: flex;
+	flex-direction: row;
+}
+
+/* search css */
+.search-container{
+	position:relative;
+}
+.search-result{
+	position:absolute;
+	background: white;
+	width:100%;
+	padding:10px;
+	border:1px solid grey;
+	display: none;
+}
+
+.active{
+	background: #009688!important;
+	color:white!important;
+}
+
+.notify{
+	position: relative;
+}
+.msg{
+	position:absolute;
+}
+
+
+
+
